@@ -34,3 +34,22 @@ let notAttendingText = "You are not attending this conference 😌"
 let attendingText = "You will be attending this conference 🙋"
 let notAttendingButtonText = "I will attend the conference"
 let attendingButtonText = "I won't attend the conference"
+
+extension ConferenceDetails {
+  
+  var numberOfAttendees: Int {
+    return attendees?.count ?? 0
+  }
+  
+  func isAttendedBy(_ attendeeID: String) -> Bool {
+    return attendees?.contains(where: { $0.id == attendeeID }) ?? false
+  }
+}
+
+extension AttendeeDetails {
+  
+  var numberOfConferencesAttending: Int {
+    return conferencesMeta.count
+  }
+  
+}

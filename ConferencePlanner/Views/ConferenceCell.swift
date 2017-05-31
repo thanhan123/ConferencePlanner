@@ -37,6 +37,15 @@ class ConferenceCell: UITableViewCell {
   @IBOutlet weak var infoLabel: UILabel!
   @IBOutlet weak var attendingLabel: UILabel!
 
+  var conference: ConferenceDetails! {
+    didSet {
+      nameLabel.text = "\(conference.name) \(conference.year)"
+      let attendeeCount = conference.numberOfAttendees
+      infoLabel.text =
+      "\(conference.city) (\(attendeeCount) \(attendeeCount == 1 ? "attendee" : "attendees"))"
+    }
+  }
+  
   // MARK: - Properties
   var isCurrentUserAttending: Bool = false {
     didSet {
